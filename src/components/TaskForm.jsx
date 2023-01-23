@@ -1,4 +1,5 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
+import { TaskContext } from "../contex/TaskContex";
 
 export const TaskForm = () => {
   const [task, setTask] = useState({
@@ -6,11 +7,7 @@ export const TaskForm = () => {
     description: "",
   });
 
-  //useEffect(() => {
-    //if (edit) {
-      //setTask(edit);
-    //}
-  //}, [edit]);
+  const { addTask } = useContext(TaskContext);
 
   const handleChange = (e) => {
     setTask({
@@ -21,13 +18,7 @@ export const TaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (edit) {
-      console.log("edit");
-      //editTask(task);
-    } else {
-      console.log("add");
-      //addTask(task);
-    }
+    addTask(task);
     setTask({
       title: "",
       description: "",
@@ -42,6 +33,7 @@ export const TaskForm = () => {
         placeholder="Task title"
         onChange={handleChange}
         value={task.title}
+        className="w-full p-2 mb-4 text-black rounded-md"
       />
       <input
         type="text"
@@ -49,8 +41,9 @@ export const TaskForm = () => {
         placeholder="Task description"
         onChange={handleChange}
         value={task.description}
+        className="w-full p-2 mb-4 text-black rounded-md"
       />
-      <button type="submit">{1===0 ? "Edit" : "Add"}</button>
+      <button type="submit" className="w-full p-2 bg-green-500 text-white"> Add</button>
     </form>
   );
 }

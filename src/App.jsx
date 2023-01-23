@@ -1,4 +1,5 @@
-import {TaskForm} from "./components/TaskForm";
+import { TaskForm } from "./components/TaskForm";
+import { Tasks } from "./components/Tasks";
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
         <h1 className="text-4xl font-bold text-center mb-4">Hello World</h1>
         <p className="text-center mb-4">This is a sample React app built with </p>
         <TaskForm />
+        <Tasks />
       </div>
     </div>
   
