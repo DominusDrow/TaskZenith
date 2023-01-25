@@ -5,7 +5,7 @@ export const CardTask = ({ task, index }) => {
   const { deleteTask, editTask } = useContext(TaskContext);
   return (
         <div
-          className="bg-gray-700 p-4 mb-4 flex justify-between items-center"
+          className="bg-gray-700 p-6 mb-4 mt-4 flex justify-between items-center"
           key={index}
         >
           <div>
