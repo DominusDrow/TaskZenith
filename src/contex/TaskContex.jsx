@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useState } from "react";
-import { database } from "../firebase";
+
 import { ref,set } from "firebase/database";
 
 export const TaskContext = createContext();
@@ -20,13 +20,6 @@ export const TaskProvider = (props) => {
       description: "Task 3 description",
     },
   ]);
-
-  const addTask1 = (task) => {
-    set(ref(database, "tasks"), [
-      ...tasks,
-      task,
-    ]);
-  };
 
   const addTask = (task) => {
     setTasks([...tasks, task]);

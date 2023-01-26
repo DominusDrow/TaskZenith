@@ -1,9 +1,11 @@
 import { TaskForm } from "./components/TaskForm";
 import { Tasks } from "./components/Tasks";
+import { Navigation } from "./components/navbar";
 
 function App() {
 
-  return (
+  return (<>
+    <Navigation />
     <div className="bg-gray-900 text-white min-h-screen flex flex-col justify-center items-center">
       <div className="w-1/2">
         <h1 className="text-4xl font-bold text-center mb-4">Task Zenith</h1>
@@ -13,7 +15,7 @@ function App() {
       </div>
     </div>
   
-  )
+  </>)
 }
 
 export default App
