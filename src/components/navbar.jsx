@@ -1,8 +1,17 @@
-import { useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { TaskContext } from '../contex/TaskContex';
+import userImg from '../assets/userUnknow.png';
 
 export const Navigation = () => {
   const { user, loginGoogle, logoutGoogle } = useContext(TaskContext);
+  const [userPhoto, setUserPhoto] = useState(userImg);
+
+  useEffect(() => {
+    if (user) 
+      setUserPhoto(user.photoURL);
+
+    console.log(userPhoto);
+  }, [user]);
 
   return (
     <nav className="bg-gray-800 p-3">
@@ -11,7 +20,7 @@ export const Navigation = () => {
           <a href="#" className="text-white">Home</a>
         </li>
         <li>
-          <img src="{user.photoURL}" className="avatar" alt="Avatar" onError={(e)=>{e.target.style.display='none'}} />
+          <img src={userPhoto} className="w-10 h-10 rounded-full" alt="user photo"/>
         </li>
         { !user && 
             <li>
