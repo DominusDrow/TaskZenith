@@ -1,11 +1,15 @@
 import { createContext } from "react";
 import { useState } from "react";
 
+import { auth, googleProvider } from "../firebase";
+import { signInWithPopup, signOut } from "firebase/auth";
+
 import { ref,set } from "firebase/database";
 
 export const TaskContext = createContext();
 
 export const TaskProvider = (props) => {
+  const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([
     {
       title: "Task 1",
@@ -20,6 +24,27 @@ export const TaskProvider = (props) => {
       description: "Task 3 description",
     },
   ]);
+
+  const loginGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const logoutGoogle = () => {
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
@@ -36,7 +61,10 @@ export const TaskProvider = (props) => {
   return (
     <TaskContext.Provider
       value={{
+        user,
         tasks,
+        loginGoogle,
+        logoutGoogle,
         addTask,
         deleteTask,
         editTask,
