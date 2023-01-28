@@ -1,53 +1,54 @@
 import { createContext } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { auth, googleProvider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 
-import { ref,set } from "firebase/database";
+import { ref, child, push, update, get } from "firebase/database";
+import { db } from "../firebase";
 
 export const TaskContext = createContext();
 
 export const TaskProvider = (props) => {
+  const dbRef = ref(db);
   const [user, setUser] = useState(null);
-  const [tasks, setTasks] = useState([
-    {
-      title: "Task 1",
-      description: "Task 1 description",
-    },
-    {
-      title: "Task 2",
-      description: "Task 2 description",
-    },
-    {
-      title: "Task 3",
-      description: "Task 3 description",
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    if(user){
+      get(child(dbRef, "tasks")).then((snapshot) => {
+        if(snapshot.exists())
+          setTasks(Object.values(snapshot.val()));
+      })
+    }
+    else
+      setTasks([]);
+  }, [user]);
 
   const loginGoogle = () => {
     signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        console.log(result.user);
-        setUser(result.user);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => 
+        setUser(result.user)
+      )
+      .catch((error) => 
+        console.log(error)
+      );
   };
 
   const logoutGoogle = () => {
     signOut(auth)
-      .then(() => {
-        setUser(null);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => 
+        setUser(null)
+      )
+      .catch((error) => 
+        console.log(error)
+      );
   };
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
+    const newTaskRef = push(child(ref(db), "tasks")).key;
+    update(ref(db, "tasks/" + newTaskRef), task);
   };
 
   const deleteTask = (index) => {

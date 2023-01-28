@@ -9,8 +9,8 @@ export const Navigation = () => {
   useEffect(() => {
     if (user) 
       setUserPhoto(user.photoURL);
-
-    console.log(userPhoto);
+    else
+      setUserPhoto(userImg);
   }, [user]);
 
   return (
