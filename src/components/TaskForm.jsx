@@ -1,25 +1,14 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { TaskContext } from "../contex/TaskContex";
 
 export const TaskForm = () => {
-  const { addTask, user } = useContext(TaskContext);
+  const { addTask } = useContext(TaskContext);
 
   const [task, setTask] = useState({
-    uid: "",
-    author: "",
     title: "",
     description: "",
+    idDate: "",
   });
-
-  useEffect(() => {
-    if (user) {
-      setTask({
-        ...task,
-        uid: user.uid,
-        author: user.displayName,
-      });
-    }
-  }, [user]);
 
   const handleChange = (e) => {
     setTask({
@@ -30,12 +19,14 @@ export const TaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    task.idDate = Date.now();
     addTask(task);
+
     setTask({
-      uid: "",
-      author: "",
       title: "",
       description: "",
+      idDate: "",
     });
   };
 

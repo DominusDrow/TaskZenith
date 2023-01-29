@@ -15,7 +15,7 @@ export const CardTask = ({ task, index }) => {
           <div>
             <button
               className="bg-red-500 text-white p-2 rounded-md mr-2"
-              onClick={() => deleteTask(index)}
+              onClick={() => deleteTask(task,index)}
             >
               Delete
             </button>

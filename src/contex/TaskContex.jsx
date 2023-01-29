@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { auth, googleProvider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 
-import { ref, child, push, update, get } from "firebase/database";
+import { ref, child, push, get, set } from "firebase/database";
 import { db } from "../firebase";
 
 export const TaskContext = createContext();
@@ -16,7 +16,7 @@ export const TaskProvider = (props) => {
 
   useEffect(() => {
     if(user){
-      get(child(dbRef, "tasks")).then((snapshot) => {
+      get(child(dbRef, "tasks/" + user.uid)).then((snapshot) => {
         if(snapshot.exists())
           setTasks(Object.values(snapshot.val()));
       })
@@ -30,9 +30,10 @@ export const TaskProvider = (props) => {
       .then((result) => 
         setUser(result.user)
       )
-      .catch((error) => 
-        console.log(error)
-      );
+      .catch((error) => {
+        setUser(null);
+        console.log(error);
+      });
   };
 
   const logoutGoogle = () => {
@@ -46,12 +47,12 @@ export const TaskProvider = (props) => {
   };
 
   const addTask = (task) => {
+    set(ref(db, "tasks/" + user.uid + "/" + task.idDate), task);
     setTasks([...tasks, task]);
-    const newTaskRef = push(child(ref(db), "tasks")).key;
-    update(ref(db, "tasks/" + newTaskRef), task);
   };
 
-  const deleteTask = (index) => {
+  const deleteTask = (task,index) => {
+    set(ref(db, "tasks/" + user.uid + "/" + task.idDate), null);
     setTasks(tasks.filter((task, i) => i !== index));
   };
 
