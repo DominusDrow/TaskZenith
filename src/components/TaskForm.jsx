@@ -56,11 +56,9 @@ export const TaskForm = () => {
         className="w-full p-2 mb-4 text-black rounded-md"
       />
 
-      
       <div className="flex w-full justify-center ">
         <HorizontalInputList />
       </div>
-
 
       <button type="submit" className="w-full p-2 bg-green-500 text-white mt-6"> Add</button>
     </form>
