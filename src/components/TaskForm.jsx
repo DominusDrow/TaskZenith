@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 import { TaskContext } from "../contex/TaskContex";
+import ColorRadioButtons from "./radiobuttom";
+import HorizontalInputList from "./TimeInput";
 
 export const TaskForm = () => {
   const { addTask } = useContext(TaskContext);
@@ -38,8 +40,13 @@ export const TaskForm = () => {
         placeholder="Task title"
         onChange={handleChange}
         value={task.title}
-        className="w-full p-2 mb-4 text-black rounded-md"
+        className="w-2/3 p-2 mb-4 text-black rounded-md inline"
       />
+
+      <div className="w-1/3">
+        <ColorRadioButtons />
+      </div>
+
       <input
         type="text"
         name="description"
@@ -48,7 +55,14 @@ export const TaskForm = () => {
         value={task.description}
         className="w-full p-2 mb-4 text-black rounded-md"
       />
-      <button type="submit" className="w-full p-2 bg-green-500 text-white"> Add</button>
+
+      
+      <div className="flex w-full justify-center ">
+        <HorizontalInputList />
+      </div>
+
+
+      <button type="submit" className="w-full p-2 bg-green-500 text-white mt-6"> Add</button>
     </form>
   );
 }
