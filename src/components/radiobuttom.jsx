@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-const colors = ["red", "orange", "green"];
+const colors = ["green", "orange", "red"];
+const priorities = ["low", "medium", "high"];
 
 const ColorRadioButtons = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   return (
-    <div className="flex">
+    <div className="flex justify-between w-1/3">
       {colors.map((color) => (
         <label
           key={color}
@@ -22,8 +23,8 @@ const ColorRadioButtons = () => {
             style={{ height: 0, width: 0 }}
           />
           <span
-            title={color}
-            className={`ml-2 cursor-pointer rounded-full h-6 w-6 ${`bg-${color}-500`} ${
+            title={`Priority: ${priorities[colors.indexOf(color)]}`}
+            className={`ml-2 cursor-pointer rounded-full h-7 w-7 ${`bg-${color}-500`} ${
               selectedColor === color ? `border-2 border-${color}-500` : ""
             }`}
             onClick={() => setSelectedColor(color)}

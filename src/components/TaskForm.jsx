@@ -34,16 +34,16 @@ export const TaskForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="title"
-        placeholder="Task title"
-        onChange={handleChange}
-        value={task.title}
-        className="w-2/3 p-2 mb-4 text-black rounded-md inline"
-      />
+      <div className="flex justify-between">
+        <input
+          type="text"
+          name="title"
+          placeholder="Task title"
+          onChange={handleChange}
+          value={task.title}
+          className="w-2/3 p-2 mb-4 text-black rounded-md inline"
+        />
 
-      <div className="w-1/3">
         <ColorRadioButtons />
       </div>
 
