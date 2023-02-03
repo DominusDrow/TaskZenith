@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
-import { TaskContext } from '../contex/TaskContex';
-import userImg from '../assets/userUnknow.png';
+import { TaskContext } from '../../contex/TaskContex';
+import userImg from '../../assets/userUnknow.png';
 
 export const Navigation = () => {
   const { user, loginGoogle, logoutGoogle } = useContext(TaskContext);
