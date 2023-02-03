@@ -7,9 +7,11 @@ export const TaskForm = () => {
   const { addTask } = useContext(TaskContext);
 
   const [task, setTask] = useState({
-    title: "",
-    description: "",
     idDate: "",
+    title: "",
+    priority: "",
+    description: "",
+    time: "",
   });
 
   const handleChange = (e) => {
@@ -26,9 +28,11 @@ export const TaskForm = () => {
     addTask(task);
 
     setTask({
-      title: "",
-      description: "",
       idDate: "",
+      title: "",
+      priority: "",
+      description: "",
+      time: "",
     });
   };
 
