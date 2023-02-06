@@ -12,6 +12,7 @@ export const TaskForm = () => {
     priority: "",
     description: "",
     time: "",
+    complete: false,
   });
 
   const handleChange = (e) => {
@@ -33,6 +34,7 @@ export const TaskForm = () => {
       priority: "",
       description: "",
       time: "",
+      complete: false,
     });
   };
 

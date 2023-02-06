@@ -60,6 +60,10 @@ export const TaskProvider = (props) => {
     setTasks(tasks.map((t, i) => (i === index ? task : t)));
   };
 
+  const completeTask = (task, index) => {
+    setTasks(tasks.map((t, i) => (i === index ? task : t)));
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -70,6 +74,7 @@ export const TaskProvider = (props) => {
         addTask,
         deleteTask,
         editTask,
+        completeTask,
       }}
     >
       {props.children}
