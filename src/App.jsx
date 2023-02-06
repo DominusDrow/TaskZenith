@@ -3,6 +3,7 @@ import { TaskContext } from "./contex/TaskContex";
 import { Navigation } from "./components/pricipalScreen/navbar";
 import { DocTask } from "./components/pricipalScreen/DocTask";
 import { WelcomeScreen } from "./components/pricipalScreen/WelcomeScreen";
+import { Footer } from "./components/pricipalScreen/footer";
 
 function App() {
   
@@ -13,6 +14,7 @@ function App() {
     <Navigation />
     { user && <DocTask /> }
     { !user && <WelcomeScreen /> }
+    <Footer />
   </div>
   );
 }
