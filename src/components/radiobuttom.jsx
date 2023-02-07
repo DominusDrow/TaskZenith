@@ -3,8 +3,13 @@ import React, { useState } from "react";
 const colors = ["green", "orange", "red"];
 const priorities = ["low", "medium", "high"];
 
-const ColorRadioButtons = () => {
+const ColorRadioButtons = ({ onChange }) => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
+
+  const handleChange = (e) => {
+    setSelectedColor(e.target.value);
+    onChange(e.target.value);
+  };
 
   return (
     <div className="flex justify-between w-1/3">
@@ -19,7 +24,7 @@ const ColorRadioButtons = () => {
             className="appearance-none form-radio"
             value={color}
             checked={selectedColor === color}
-            onChange={(e) => setSelectedColor(e.target.value)}
+            onChange={(e) => handleChange(e)}
             style={{ height: 0, width: 0 }}
           />
           <span
@@ -27,7 +32,7 @@ const ColorRadioButtons = () => {
             className={`ml-2 cursor-pointer rounded-full h-7 w-7 ${`bg-${color}-500`} ${
               selectedColor === color ? `border-2 border-${color}-500` : ""
             }`}
-            onClick={() => setSelectedColor(color)}
+            onClick={() => handleChange(color)}
           ></span>
         </label>
       ))}

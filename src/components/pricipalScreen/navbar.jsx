@@ -17,7 +17,7 @@ export const Navigation = () => {
     <nav className="bg-gray-800 p-3">
       <ul className="flex justify-between items-center">
         <li>
-          <a href="#" className="text-white">Home</a>
+          <a href="#" className="text-white">TaskZenith</a>
         </li>
         <li>
           <img src={userPhoto} className="w-10 h-10 rounded-full" alt="user photo"/>

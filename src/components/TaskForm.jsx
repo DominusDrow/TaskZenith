@@ -15,6 +15,12 @@ export const TaskForm = () => {
     complete: false,
   });
 
+  const [priority, setPriority] = useState("low");
+  const [time, setTime] = useState("15min");
+
+  const handlChildChangePriority = value => setPriority(value);
+  const handlChildChangeTime = (value) => setTime(value);
+
   const handleChange = (e) => {
     setTask({
       ...task,
@@ -26,6 +32,8 @@ export const TaskForm = () => {
     e.preventDefault();
 
     task.idDate = Date.now();
+    task.priority = priority;
+    task.time = time;
     addTask(task);
 
     setTask({
@@ -50,7 +58,7 @@ export const TaskForm = () => {
           className="w-2/3 p-2 mb-4 text-black rounded-md inline"
         />
 
-        <ColorRadioButtons />
+        <ColorRadioButtons onChange={handlChildChangePriority} />
       </div>
 
       <input
@@ -63,7 +71,7 @@ export const TaskForm = () => {
       />
 
       <div className="flex w-full justify-center ">
-        <HorizontalInputList />
+        <HorizontalInputList onChange={handlChildChangeTime} />
       </div>
 
       <button type="submit" className="w-full p-2 bg-green-500 text-white mt-6"> Add</button>
