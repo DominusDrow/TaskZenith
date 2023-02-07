@@ -1,6 +1,8 @@
 import { useSpring, animated } from '@react-spring/web';
 import { useContext } from 'react';
 import { TaskContext } from '../../contex/TaskContex';
+import googleCalendar from '../../assets/googleCalendar.png';
+import notion from '../../assets/notion.png';
 
 export const WelcomeScreen = () => {
 
@@ -19,11 +21,29 @@ export const WelcomeScreen = () => {
       <h1 className="text-5xl font-bold text-white mb-6">TaskZenith</h1>
       <h3 className="text-2xl font-bold text-white mb-6">The new ally of productivity</h3>
       <p className="text-white mb-6 w-2/3 text-center">Task Zenith is a web application that can help you organize your daily tasks by priority and by the time it takes you to do each one.</p>
-      <div className="w-64 h-10 mb-6 rounded-md bg-gray-800">
-        <div className="h-full bg-gray-600 rounded-md" style={{width: "70%"}}></div>
+
+      <p className="text-white mt-6">You can also use TaskZenith with</p>
+    <div className="flex flex-row items-center">
+      <div className="flex flex-col items-center">
+        <img
+          src={googleCalendar}
+          className="w-32 h-32 m-4"
+          alt="Google Calendar"
+        />
+        <p className="text-lg text-white">Google Calendar</p>
       </div>
-      <p className="text-white text-sm">70% de tu tarea diaria completada</p>
-      <button className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded-md" onClick={() => loginGoogle()}>Start</button>
+      <div className="flex flex-col items-center ml-6">
+        <img
+          src={notion}
+          className="w-32 h-32 m-4"
+          alt="Notion"
+        />
+        <p className="text-lg text-white">Notion</p>
+      </div>
+    </div>
+
+      <button className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded-md m-4" onClick={() => loginGoogle()}>Start</button>
+
     </animated.div>
   );
 };

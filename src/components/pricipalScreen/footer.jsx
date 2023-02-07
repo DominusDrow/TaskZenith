@@ -12,7 +12,7 @@ export const Footer = () => {
             className="text-gray-400 hover:text-white mr-6"
           >
             <FaGithub className="inline-block mr-2" />
-            DominusDrow
+            Github
           </a>
           <a
             href="https://linkedin.com/in/dominusdrow"
