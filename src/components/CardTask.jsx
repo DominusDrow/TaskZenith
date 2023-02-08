@@ -4,7 +4,6 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { BiTimeFive } from "react-icons/bi";
 import { MdPriorityHigh } from "react-icons/md";
 
-
 export const CardTask = ({ task, index }) => {
   const { deleteTask, editTask, completeTask } = useContext(TaskContext);
 
@@ -15,7 +14,7 @@ export const CardTask = ({ task, index }) => {
         >
           <div className="flex items-center">
             <div className="flex justify-between items-center">
-              <button className={`w-4 h-4 rounded-full mr-3 ${task.completed ? "bg-green-500" : "bg-white"}`} onClick={() => completeTask(task.id)}>
+              <button className={`w-4 h-4  mr-3 ${task.complete ? "bg-green-500" : "bg-white"}`} onClick={() => completeTask(task, index)}>
               </button>
             </div>
             <div>

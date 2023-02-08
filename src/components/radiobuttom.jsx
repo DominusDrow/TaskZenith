@@ -8,7 +8,7 @@ const ColorRadioButtons = ({ onChange }) => {
 
   const handleChange = (e) => {
     setSelectedColor(e.target.value);
-    onChange(e.target.value);
+    onChange(priorities[colors.indexOf(e.target.value)]);
   };
 
   return (

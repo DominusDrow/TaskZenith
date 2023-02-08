@@ -61,6 +61,8 @@ export const TaskProvider = (props) => {
   };
 
   const completeTask = (task, index) => {
+    task.complete = !task.complete;
+    set(ref(db, "tasks/" + user.uid + "/" + task.idDate), task);
     setTasks(tasks.map((t, i) => (i === index ? task : t)));
   };
 
