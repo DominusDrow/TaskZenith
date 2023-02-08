@@ -15,7 +15,7 @@ export const CardTask = ({ task, index }) => {
         >
           <div className="flex items-center">
             <div className="flex justify-between items-center">
-              <button className="bg-{task.complete ? 'green' : 'white'}-500 text-white px-4 py-2 rounded" onClick={() => completeTask(task.id)}>
+              <button className={`w-4 h-4 rounded-full mr-3 ${task.completed ? "bg-green-500" : "bg-white"}`} onClick={() => completeTask(task.id)}>
               </button>
             </div>
             <div>
