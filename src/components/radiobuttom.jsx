@@ -29,7 +29,7 @@ const ColorRadioButtons = ({ onChange }) => {
           />
           <span
             title={`Priority: ${priorities[colors.indexOf(color)]}`}
-            className={`ml-2 cursor-pointer rounded-full h-7 w-7 ${`bg-${color}-500`} ${
+            className={`ml-2 cursor-pointer rounded-full h-5 w-5 ${`bg-${color}-500`} ${
               selectedColor === color ? `border-2 border-${color}-500` : ""
             }`}
             onClick={() => handleChange(color)}

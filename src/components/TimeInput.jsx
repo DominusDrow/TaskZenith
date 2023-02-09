@@ -14,7 +14,7 @@ const HorizontalRadioList = ({ onChange }) => {
     <div className="w-1/2 flex justify-center">
 
       {times.map((time) => (
-        <label key={time} className="block w-13 ">
+        <label key={time} className="block w-full">
           <input
             type="radio"
             value={time}
@@ -25,7 +25,7 @@ const HorizontalRadioList = ({ onChange }) => {
           <span
             className={`cursor-pointer ${
               selectedOption === time ? "bg-blue-700" : "bg-neutral-900"
-            } p-2  text-white text-sm font-bold pl-10 pr-10 border-2 border-neutral-900`}
+            } p-2  text-white text-sm font-bold border-2 border-neutral-900`}
           >
             {time}
           </span>
