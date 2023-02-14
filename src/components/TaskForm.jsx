@@ -51,12 +51,13 @@ export const TaskForm = () => {
 
   return (
     <>
-     <button className="bg-gray-700 text-white p-2 rounded-full" onClick={() => setIsOpen(!isOpen)}>
+     <button className="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600 w-12 h-12 flex justify-center items-center"
+        onClick={() => setIsOpen(!isOpen)}>
         <BsPlusLg />
       </button>
 
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-70 flex items-center justify-center">
           <div className="m-auto max-w-xl bg-gray-700 rounded-lg shadow-lg p-4 w-full">
             <div className="flex justify-center items-center">
               <h3 className="text-lg font-bold text-white">Add Task</h3>
@@ -76,6 +77,7 @@ export const TaskForm = () => {
           onChange={handleChange}
           value={task.title}
           className="w-2/3 p-2 mb-4 text-black rounded-md inline"
+          required
         />
 
         <ColorRadioButtons onChange={handlChildChangePriority} />
