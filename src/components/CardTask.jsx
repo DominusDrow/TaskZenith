@@ -3,6 +3,7 @@ import { TaskContext } from "../contex/TaskContex";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { BiTimeFive } from "react-icons/bi";
 import { MdPriorityHigh } from "react-icons/md";
+import {MdDateRange} from "react-icons/md";
 
 export const CardTask = ({ task, index }) => {
   const { deleteTask, editTask, completeTask } = useContext(TaskContext);
@@ -43,6 +44,11 @@ export const CardTask = ({ task, index }) => {
             >
               <FaEdit />
             </button>
+            <div className="flex items-center mt-3">
+              <MdDateRange className="text-yellow-500" />
+              <p className="text-gray-400 ml-2">{new Date(task.idDate).toLocaleDateString()}</p>
+            </div>
+
          </div>
         </div>
   );
