@@ -22,7 +22,7 @@ export const Footer = () => {
             LinkedIn
           </a>
           <a
-            href="https://yourportfolio.com"
+            href="https://drowdominus.web.app"
             className="text-gray-400 hover:text-white"
           >
             <FaBriefcase className="inline-block mr-2" />

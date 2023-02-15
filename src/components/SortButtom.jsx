@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {BsSortDown} from 'react-icons/bs';
+import {TaskContext} from '../contex/TaskContex';
 
 const SortTasks = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const {sortTasks} = useContext(TaskContext);
+
+  const handleSort = (e) => {
+    sortTasks(e.target.dataset.value);
+    setIsOpen(false);
+  }
 
   return (
     <div className="relative inline-block">
@@ -15,19 +22,13 @@ const SortTasks = () => {
       {isOpen && (
         <ul className="absolute right-0 mt-2 py-2 bg-gray-700 rounded-lg shadow-xl">
           <li className="hover:bg-gray-500 py-2 px-4 text-white">
-            <a className="block" href="#">
-              Priority
-            </a>
+            <a className="block cursor-pointer" data-value="priority" onClick={(e) => handleSort(e)}>Priority</a>
           </li>
           <li className="hover:bg-gray-500 py-2 px-4 text-white">
-            <a className="block" href="#">
-              Time
-            </a>
+            <a className="block cursor-pointer" data-value="time" onClick={(e) => handleSort(e)}>Time</a>
           </li>
           <li className="hover:bg-gray-500 py-2 px-4 text-white">
-            <a className="block" href="#">
-              Date
-            </a>
+            <a className="block cursor-pointer" data-value="date" onClick={(e) => handleSort(e)}>Date</a>
           </li>
         </ul>
       )}

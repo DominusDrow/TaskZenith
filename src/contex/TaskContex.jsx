@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { auth, googleProvider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 
-import { ref, child, push, get, set } from "firebase/database";
+import { ref, child, get, set } from "firebase/database";
 import { db } from "../firebase";
 
 export const TaskContext = createContext();
@@ -66,6 +66,26 @@ export const TaskProvider = (props) => {
     setTasks(tasks.map((t, i) => (i === index ? task : t)));
   };
 
+  const sortTasks = (op) => {
+    switch (op) {
+      case "date":
+        setTasks([...tasks].sort((a, b) => a.idDate - b.idDate));
+        console.log(tasks);
+        break;
+      case "priority":
+        setTasks([...tasks].sort((a, b) => a.priority.localeCompare(b.priority)));
+        console.log(tasks);
+        break;
+      case "time":
+        setTasks([...tasks].sort((a, b) => a.time.localeCompare(b.time)));
+        console.log(tasks);
+        break;
+      default:
+        break;
+    }
+  }
+
+
   return (
     <TaskContext.Provider
       value={{
@@ -77,6 +97,7 @@ export const TaskProvider = (props) => {
         deleteTask,
         editTask,
         completeTask,
+        sortTasks
       }}
     >
       {props.children}

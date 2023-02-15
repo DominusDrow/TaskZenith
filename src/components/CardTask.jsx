@@ -32,6 +32,7 @@ export const CardTask = ({ task, index }) => {
             </div>
           </div>
           <div>
+            <div className="flex items-center justify-center">
             <button
               className="bg-red-500 text-white p-2 rounded-md mr-2"
               onClick={() => deleteTask(task,index)}
@@ -44,6 +45,7 @@ export const CardTask = ({ task, index }) => {
             >
               <FaEdit />
             </button>
+            </div>
             <div className="flex items-center mt-3">
               <MdDateRange className="text-yellow-500" />
               <p className="text-gray-400 ml-2">{new Date(task.idDate).toLocaleDateString()}</p>
