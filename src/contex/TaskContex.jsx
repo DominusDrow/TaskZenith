@@ -70,17 +70,12 @@ export const TaskProvider = (props) => {
     switch (op) {
       case "date":
         setTasks([...tasks].sort((a, b) => a.idDate - b.idDate));
-        console.log(tasks);
         break;
       case "priority":
         setTasks([...tasks].sort((a, b) => a.priority.localeCompare(b.priority)));
-        console.log(tasks);
         break;
       case "time":
         setTasks([...tasks].sort((a, b) => a.time.localeCompare(b.time)));
-        console.log(tasks);
-        break;
-      default:
         break;
     }
   }
