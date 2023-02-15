@@ -13,6 +13,7 @@ export const TaskProvider = (props) => {
   const dbRef = ref(db);
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
+  const [taskDone, setTaskDone] = useState(true);
 
   useEffect(() => {
     if(user){
@@ -80,12 +81,13 @@ export const TaskProvider = (props) => {
     }
   }
 
-
   return (
     <TaskContext.Provider
       value={{
         user,
         tasks,
+        taskDone,
+        setTaskDone,
         loginGoogle,
         logoutGoogle,
         addTask,
