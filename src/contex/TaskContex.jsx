@@ -13,7 +13,7 @@ export const TaskProvider = (props) => {
   const dbRef = ref(db);
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
-  const [taskDone, setTaskDone] = useState(true);
+  const [taskDone, setTaskDone] = useState("false");
 
   useEffect(() => {
     if(user){

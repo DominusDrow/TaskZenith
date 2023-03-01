@@ -25,7 +25,7 @@ const HorizontalRadioList = ({ onChange }) => {
           <span
             className={`cursor-pointer ${
               selectedOption === time ? "bg-blue-700" : "bg-neutral-900"
-            } p-2  text-white text-sm font-bold border-2 border-neutral-900`}
+            } p-2  text-white text-sm font-bold border-neutral-900`}
           >
             {time}
           </span>

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { TaskContext } from "../contex/TaskContex";
 
-const Donebutton = ["true", "false"];
-const TextDone = ["Done", "Not Done"];
+const Donebutton = ["false", "true"];
+const TextDone = ["Not Done", "Done"];
 
 export const ToggleDone = () => {
   const { taskDone } = useContext(TaskContext);
@@ -21,8 +21,14 @@ export const ToggleDone = () => {
               checked={taskDone == done}
               onChange={(e) => setTaskDone(e.target.value)}
             />
-            <span className={`cursor-pointer ${(taskDone == done && "bg-blue-700") || "bg-gray-700"} block w-24 h-12 text-white text-center text-sm font-bold`}>
-              {TextDone[index]}
+            <span className={`cursor-pointer 
+              ${(taskDone == done && "bg-blue-700") || "bg-gray-700"}
+              ${(done == "true" && "rounded-r-xl") || "rounded-l-xl"}
+              block w-20 h-10 text-white text-center text-sm font-bold`}>
+
+              <div className="flex justify-center items-center h-full">
+                {TextDone[index]}
+              </div>
             </span>
         </div>
         </label>

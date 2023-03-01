@@ -57,7 +57,7 @@ export const TaskForm = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-70 flex items-center justify-center">
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-70 flex items-center justify-center z-10">
           <div className="m-auto max-w-xl bg-gray-700 rounded-lg shadow-lg p-4 w-full">
             <div className="flex justify-center items-center">
               <h3 className="text-lg font-bold text-white">Add Task</h3>
